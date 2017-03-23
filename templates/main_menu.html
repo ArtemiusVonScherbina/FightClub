@@ -1,10 +1,32 @@
 {% extends "base.html" %}
+{%block CSS%}
+<style>
+.block_blue{
+text-align: center;
+border: 2px solid #000000;
+background-color: #3399ff;
+border-radius:4px;
+color: #FF8100;
+font-family: 'Titillium Web', sans-serif;
+font-style: italic;
+text-shadow: 1px 1px #000000;
+
+}
+#search{
+width: 145px;
+background-color: #3399ff;
+}
+</style>
+{%endblock CSS%}
 {%block content%}
-	{% for room in rooms%}
-	<div class="col-sm-12">
-		<div class="col-sm-3">{{room.name}}</div>
-		<div class="col-sm-3">{%if room.game_type == "SP"%}<p>Simpleplay</p>{%else%}<p>Multiplay</p>{%endif%}</div>
-		<div class="col-sm-3">{{room.date_begin}}</div>
-	 </div>
-{%endfor%}
-{%endblock content%}	
+<input type="text">
+<button type="submit" class="btn btn-primary">Search</button>
+<br>
+{% for room in rooms%}
+	<div class="col-sm-3 block_blue">
+		<div class="col-sm-12">{{room.name}}</div>
+		<div class="col-sm-12">{%if room.game_type == "SP"%}<p>Simpleplay</p>{%else%}<p>Multiplay</p>{%endif%}</div>
+		<div class="col-sm-12">{{room.date_begin}}</div>
+	</div>
+	{%endfor%}
+	{%endblock content%}
